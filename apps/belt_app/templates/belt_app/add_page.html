@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Trip</title>
+  </head>
+  <a href="belt_app/travels">Home</a> <a href="belt_app/logout">Logout</a>
+  <body>
+    {% if messages %}
+      {% for message in messages %}
+    <h4> {{message}}</h4>
+      {% endfor %}
+    {% endif %}
+    <h1> Add a Trip!</h1>
+    <form class="" action="belt_app/add" method="post">
+      {% csrf_token %}
+      <ul>
+        <li>Destination: <input type="text" name="destination" value=""></li>
+        <li>Description: <input type="text" name="description" value=""></li>
+        <li>Travel Date From: <input type="text" name="date_from" value=""></li>
+        <li>Travel Date Until: <input type="text" name="date_until" value=""></li>
+      </ul>
+      <input type="submit" name="submit" value="Add">
+
+    </form>
+  </body>
+</html>

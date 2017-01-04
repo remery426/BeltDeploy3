@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index</title>
+  </head>
+  <body>
+
+    <a href="belt_app/logout">Logout</a>
+    <h1> Hello, {{request.session.thisuser}}!</h1>
+    <h3> Your Trips </h3>
+    <table>
+      <tr>
+        <th>Destination</th>
+        <th>Travel start date</th>
+        <th>Travel end date</th>
+        <th>Plan</th>
+      </tr>
+      {% for trip in user_trips %}
+        <tr>
+          <th><a href="belt_app/trip/{{trip.id}}">{{trip.destination}}</a></th>
+          <th>{{trip.datefrom}}</th>
+          <th>{{trip.dateuntil}}</th>
+          <th>{{trip.description}}</th>
+        <tr>
+        {% endfor %}
+    </table>
+    <h2> Other Users Trips </h2>
+      <table>
+          <tr>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Startdate</th>
+            <th>Travel Enddate</th>
+            <th>Want to join</th>
+        {% for trip in all_trips %}
+          {% if trip not in user_trips %}
+          <tr>
+            <th>{{trip.user.username}}</th>
+            <th><a href="belt_app/trip/{{trip.id}}">{{trip.destination}}</a></th>
+            <th>{{trip.datefrom}}</th>
+            <th>{{trip.dateuntil}}</th>
+            <th><a href="belt_app/join/{{trip.id}}">Join</a></th>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      </table>
+
+
+    <a href="belt_app/add_page">Add Travel Plans</a>
+  </body>
+</html>

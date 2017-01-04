@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trip Page</title>
+  </head>
+  <body>
+    <a href="belt_app/travels">Home</a> <a href="belt_app/logout">Logout</a>
+    <h1> {{thistrip.destination}}</h1>
+    <h3>Planned By: {{thistrip.user.username}}</h3>
+    <h3> Travel Date From: {{thistrip.datefrom}}</h3>
+    <h3>Travel Date Until: {{thistrip.dateuntil}}</h3>
+    <h2> Other users joining on trip </h2>
+    {% for user in trip_takers %}
+      {% if user.username != thistrip.user.username %}
+      <h3> {{user.username}} </h3>
+      {% endif %}
+    {% endfor %}
+  </body>
+
+</html>
